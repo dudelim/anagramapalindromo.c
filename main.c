@@ -11,37 +11,45 @@ int sget(char *vetor, int tam) {
   }
 }
 
-int anagramapalindromo(char* palavra){
-  int contador[50];
+int anagramapalindromo(char *palavra) {
+
+  int contador[26];
   int i;
   int impar = 0;
+  int resposta;
 
-  for(i =  0; i < strlen(palavra); i++){
-    contador[palavra[i] - 'a']++;
+  for (i = 0; i < strlen(palavra); i++) {
+    if (palavra[i] >= 'a' && palavra[i] <= 'z') {
+      contador[palavra[i] - 'a']++;
+    }
   }
-  for(i = 0; i < 50; i++){
-    if(contador[i] % 2 != 0){
+
+  for (i = 0; i < 26; i++) {
+    if (contador[i] % 2 != 0) {
       impar++;
     }
   }
-  return 0;
+  if (impar > 1) {
+    resposta = 0;
+  }
+
+  resposta = 1;
 }
 
-
 #define TAM 50
-int main (void){
+int main(void) {
   char palavra[TAM];
-  int resposta = anagramapalindromo(palavra);
-
+  
   printf("Input: ");
   sget(palavra, TAM);
 
-  if(resposta){
-    printf("Output: true", palavra);
-  } else {
-    printf("Output: false", palavra);
-  }
+  int resposta = anagramapalindromo(palavra);
   
+  if (resposta == 0) {
+    printf("Output: false");
+  } else if (resposta == 1) {
+    printf("Output: false");
+  }
 
   return 0;
 }
