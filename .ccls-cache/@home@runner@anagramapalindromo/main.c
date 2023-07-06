@@ -12,8 +12,7 @@ int sget(char *vetor, int tam) {
 }
 
 int anagramapalindromo(char *palavra) {
-
-  int contador[26];
+  int contador[26] = {0};
   int i;
   int impar = 0;
   int resposta;
@@ -31,9 +30,11 @@ int anagramapalindromo(char *palavra) {
   }
   if (impar > 1) {
     resposta = 0;
+  } else {
+    resposta = 1;
   }
-
-  resposta = 1;
+  
+  return resposta;
 }
 
 #define TAM 50
@@ -48,8 +49,7 @@ int main(void) {
   if (resposta == 0) {
     printf("Output: false");
   } else if (resposta == 1) {
-    printf("Output: false");
+    printf("Output: true");
   }
-
   return 0;
 }
